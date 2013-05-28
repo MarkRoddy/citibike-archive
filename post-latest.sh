@@ -14,7 +14,7 @@ THIS_FILE=`date --utc  +%F-%H-%M`.json
 
 
 echo "Downloading $URL_ENDPOINT to /tmp/$THIS_FILE"
-curl "$URL_ENDPOINT" > "/tmp/$THIS_FILE"
+curl --fail --silent "$URL_ENDPOINT" > "/tmp/$THIS_FILE"
 
 echo "S3 Putting /tmp/$THIS_FILE to $BUCKET_ROOT"
 s3cmd put "/tmp/$THIS_FILE" "$BUCKET_ROOT/$THIS_FILE"
